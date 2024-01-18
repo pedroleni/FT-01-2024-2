@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+
+    <form  method="get">
+        <fieldset>
+            <legend>Datos personales:</legend>
+            <div class="inputUsername">
+                <div>
+                    <label for="userName">Username: 
+                        
+                    </label> <!-- Elmentos en linea-->
+
+                </div>
+                <div>
+                    <input type="text" name="userName" id="userName" placeholder="Pedro" maxlength="15" minlength="2" required>
+
+
+                </div>
+
+            </div>
+            
+            
+            <!-- tenemos que meter un label para el tema de accesibilidad  --- lectores pantalla paginas web-->
+            <div class="inputPassword">
+                <div>
+                    <label for="password">Password: </label>
+                </div>
+                <div>
+                    <input type="password" name="password" id="password">
+                    <button type="button" id="changeVisibility">VER</button>
+
+                </div>
+            </div>
+        </fieldset>
+        <input type="number" name="" id="">
+        <input type="range" name="" id="">
+        <input type="date" name="" id="">
+        <input type="datetime-local" name="" id="">
+        <input type="week" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="radio" name="" id="">
+        <select name="" id="">
+            <option value="">Madrid</option>
+            <option value="">Barcelona</option>
+            <option value="">Cadiz</option>
+            <option value="">Huelva</option>
+        </select>
+
+        <select name="" id="">
+            <optgroup label="Superheroes">
+                <option value="">Batman</option>
+                <option value="">Thor</option>
+                <option value="">Spiderman</option>
+                <option value="">Worder woman</option>
+            </optgroup>
+            <optgroup label="villanos">
+                <option value="">Duende Verde</option>
+                <option value="">Joker</option>
+                <option value="">Thanos</option>
+                <option value="">pipon</option>
+            </optgroup>
+
+            <input type="color" name="" id="">
+            <input type="file" name="" id="">
+            <progress min="0" max="100" value="20"> 70%</progress>
+        </select>
+
+        <input type="hidden" name="">
+        <input type="search" name="" id="">
+
+        <label for="ice-cream-choice">Choose a flavor:</label>
+        <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+        <datalist id="ice-cream-flavors">
+            <option value="Chocolate"></option>
+            <option value="Coconut"></option>
+            <option value="Mint"></option>
+            <option value="Strawberry"></option>
+            <option value="Vanilla"></option>
+          </datalist>
+
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+
+
+
+        <button type="submit" id="buttonSubmit">ENVIAR</button>
+        <input type="submit" value="ENVIAR">
+        <button type="reset">RESET</button>
+    </form>
+    
+</body>
+</html>
