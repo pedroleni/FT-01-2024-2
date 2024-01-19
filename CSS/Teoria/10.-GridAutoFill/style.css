@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.gallery {
+    display: grid;
+    /* Auto-fill --> no se el numero de columnas que quiero ---> pero sé las medidas --> mínimo 300px y máximo 1porción (lo que pueda)*/
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: 300px 300px 300px;
+    gap:1rem;
+    padding: 1rem;
+
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
