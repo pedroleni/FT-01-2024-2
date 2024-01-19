@@ -1,0 +1,103 @@
+/* selector universal -----> hacer el reset*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    width: 100vw ;
+    min-height: 100vh ;
+}
+
+a[href="https://www.facebook.com"]{
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin: 1rem; 
+    background-color: #1877f2;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+-moz-box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+transition: ease-in-out 0.3s 
+
+}
+
+/* si el boton es muy oscuro el hover --> aclara el color
+si el boton es muy claro el hover  --> oscurece el boton */
+
+a[href="https://www.facebook.com"]:hover{
+    -webkit-box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    background-color: #1876f2cf;
+}
+
+
+a[href="https://www.google.com"]{
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin: 1rem; 
+    background-color: #f26418;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+-moz-box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+transition: ease-in-out 0.3s 
+
+}
+
+/* si el boton es muy oscuro el hover --> aclara el color
+si el boton es muy claro el hover  --> oscurece el boton */
+
+a[href="https://www.google.com"]:hover{
+    -webkit-box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    background-color: #f26418c1;
+}
+
+a[href="https://www.instagram.com"]{
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin: 1rem; 
+    background-color: #ee18f2;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+-moz-box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+box-shadow: 10px 10px 12px -3px rgba(0,0,0,0.45);
+transition: ease-in-out 0.3s 
+
+}
+
+/* si el boton es muy oscuro el hover --> aclara el color
+si el boton es muy claro el hover  --> oscurece el boton */
+
+a[href="https://www.instagram.com"]:hover{
+    -webkit-box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    box-shadow: 10px 10px 12px -6px rgba(0,0,0,0.7);
+    background-color: #ee18f2c6;
+}
+
+nav{display: flex}
+

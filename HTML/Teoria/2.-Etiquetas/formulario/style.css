@@ -5,9 +5,9 @@ form{
     justify-content: center; 
     align-items: center;
     padding: 2rem;
-    -webkit-box-shadow: -2px 1px 12px 1px rgba(0,0,0,0.11);
--moz-box-shadow: -2px 1px 12px 1px rgba(0,0,0,0.11);
-box-shadow: -2px 1px 12px 1px rgba(0,0,0,0.11);
+    -webkit-box-shadow: -2px 1px 12px 1px rgba(0, 0, 0, 0.053);
+-moz-box-shadow: -2px 1px 12px 1px rgba(0, 0, 0, 0.062);
+box-shadow: -2px 1px 12px 1px rgba(0, 0, 0, 0.061);
    
 
 }

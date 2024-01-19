@@ -1,0 +1,33 @@
+ul > li {
+    list-style: none;
+}
+
+ul{
+    display: flex;
+    
+}
+
+ul > li::after {
+    content: "👌"
+    
+}
+
+ul > li::before {
+    content: "❤️"
+    
+}
+
+h2::first-letter{
+    font-size:200%
+}
+
+input::placeholder{
+    color:blue
+}
+
+p::first-line{
+    color:blueviolet
+}
+
+
+
