@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300&display=swap');
+
+@font-face {
+    font-family: "Formula";
+    src: url(./assets/fonts/Formula1-Regular.otf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Formula";
+    src: url(./assets/fonts/Formula1-Bold.otf);
+    font-weight: 800;
+}
+
+:root{
+    font-family: 'Roboto';
+    font-weight: 200;
+}
+

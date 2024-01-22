@@ -1,0 +1,61 @@
+a:hover{
+    background: red;
+}
+
+input:invalid{
+    outline:none;
+    border: 1px red solid
+}
+
+ul li:only-child{
+    opacity: 0.5;
+}
+
+input:read-write{
+    background-color: blue;
+}
+
+input:required{
+    background-color: var(--primary)
+}
+
+:root{
+    --primary: rgba(0, 0, 255, 0.643);
+    --secundary: green;
+    --border-radius: 1.2rem;
+    --border: 1px solid red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px
+
+}
+
+input:focus{
+    background: cadetblue;
+    outline: none;
+    border: 2px solid green;
+    color: white
+}
+
+.ranking > li:nth-child(3){
+    color:blanchedalmond
+}
+
+.ranking > li:first-child{
+    color: red
+}
+button:disabled{
+    background-color: aqua;
+}
+
+input:checked{
+    accent-color: yellow;
+}
+a:not(:any-link){
+    color:blueviolet
+}
+
+.btn:active{
+    background: blue;
+    color: white
+}
+

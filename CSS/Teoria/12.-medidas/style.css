@@ -1,0 +1,15 @@
+body > div:first-child{
+   min-width: 50vmin;
+    border: 1px solid red;
+    height: 200px ;
+}
+
+body > div:first-child div{
+    width: 80vw;
+    background: rgba(0, 0, 0, 0.813);
+    height: 200px ;
+}
+
+*{
+    box-sizing: border-box;
+}
