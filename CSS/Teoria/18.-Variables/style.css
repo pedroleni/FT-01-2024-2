@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Las almacenamos en la "raiz" mediante :root */
+/* al crearse se inician con doble guión --nombreVariable : valor */
+:root {
+--fondo: #777a7d;
+--primaryColor: #db83e3;
+--secundaryColor: #e2d547;
+--font-Size-XL: 5rem;
+--secundaryBackground: #050505;
+/* ... */
+}
+
+/* Para utilizar las variables creadas en root utilizamos la palabra
+ reservada var seguida de () y dentro el nombre de la variable */
+body {
+    background-color: var(--fondo);
+}
+
+h1 {
+    color: var(--primaryColor);
+    font-size: var(--font-Size-XL);
+}
+
+
+h3 {
+    color: var(--primaryColor);
+    font-size: var(--font-Size-XL);
+}
+
+
+h4 {
+    color: var(--primaryColor);
+    font-size: var(--font-Size-XL);
+}
+
+p {
+    color: var(--secundaryColor);
+    background-color: var(--secundaryBackground);
+}
