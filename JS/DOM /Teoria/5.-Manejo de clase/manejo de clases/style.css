@@ -1,0 +1,27 @@
+.parrafoExample{
+    color: blue
+}
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+#app{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+body.dark p{
+    color: white
+}
+
+body.dark button{
+    background-color: blueviolet;
+    color: white
+}
+
+body.dark{
+    background-color: black;
+}
