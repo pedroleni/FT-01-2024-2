@@ -24,7 +24,7 @@ const template = () => `
         </figure>
       </li>
       <li>
-        <figure id="navigatePage">
+        <figure id="navegatePagina">
           <img
             src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761735/6168776_kfna36.png"
             alt="go to memory game"
@@ -45,9 +45,9 @@ const addEventListeners = () => {
     initControler("Pokemon");
   });
 
-  const navigateAhorcado = document.getElementById("navigatePage");
+  const navigateAhorcado = document.getElementById("navegatePagina");
   navigateAhorcado.addEventListener("click", () => {
-    initControler("Pokemon");
+    initControler("Ahorcado");
   });
 };
 
