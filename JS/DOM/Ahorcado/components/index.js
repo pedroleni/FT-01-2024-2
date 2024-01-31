@@ -4,3 +4,4 @@ export * from "./CardPokemons/CardPokemons";
 export * from "./Spinner/Spinner";
 export * from "./ButtonFIlter/ButtonFilter";
 export * from "./spinner/SpinnerButton";
+export * from "./ButtonLetras/ButtonLetras";

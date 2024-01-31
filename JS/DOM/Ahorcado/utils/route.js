@@ -1,5 +1,10 @@
 import { getUser } from "../global/state/globalState";
-import { Login, PrintPokemonPage, printTemplateDashboard } from "../pages";
+import {
+  Login,
+  PrintAhorcado,
+  PrintPokemonPage,
+  printTemplateDashboard,
+} from "../pages";
 
 //! ----------------------------------------------------------------------------------------------------------------------
 //? ------------------------------------- CONTROLADOR DE LO QUE SE RENDERIZA EN CADA MOMENTO------------------------------
@@ -40,7 +45,7 @@ export const initControler = (pagesRender) => {
       Login();
       break;
     case "Ahorcado":
-      "Memory()";
+      PrintAhorcado();
       break;
   }
 };
