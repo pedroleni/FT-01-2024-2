@@ -57,12 +57,21 @@ const registerLargo = async (req, res, next) => {
       ///! SI HAY UNA NUEVA ASINCRONIA DE CREAR O ACTUALIZAR HAY QUE METER OTRO TRY CATCH
       try {
         const userSave = await newUser.save();
-      } catch (error) {}
+        return res.status(200).json({ data: userSave });
+      } catch (error) {
+        return res.status(404).json(error.message);
+      }
     } else {
       ///! -------> cuando ya existe un usuario con ese email y ese name
       if (req.file) deleteImgCloudinary(catchImg);
       // como ha habido un error la imagen previamente subida se borra de cloudinary
       return res.status(409).json("this user already exist");
     }
-  } catch (error) {}
+  } catch (error) {
+    // SIEMPRE QUE HAY UN ERROR GENERAL TENEMOS QUE BORRAR LA IMAGEN QUE HA SUBIDO EL MIDDLEWARE
+    if (req.file) deleteImgCloudinary(catchImg);
+    return next(error);
+  }
 };
+
+module.exports = { registerLargo };
