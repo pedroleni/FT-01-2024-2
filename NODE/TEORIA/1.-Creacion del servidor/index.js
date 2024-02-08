@@ -38,6 +38,9 @@ app.use("/api/v1/characters/", CharacterRoutes);
 const MovieRoutes = require("./src/api/routes/Movie.routes");
 app.use("/api/v1/movies/", MovieRoutes);
 
+const MessageRoutes = require("./src/api/routes/Message.routes");
+app.use("/api/v1/message/", MessageRoutes);
+
 //! --------------- generamos un error de cuando no see encuentre la ruta
 app.use("*", (req, res, next) => {
   const error = new Error("Route not found");

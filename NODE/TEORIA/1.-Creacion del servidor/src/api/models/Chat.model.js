@@ -12,21 +12,11 @@ const Schema = mongoose.Schema;
 // ------------> definimos otras propiedades que limitan la informacion que se puede incluir en esa clave
 // ------------> que sea requerido, una longitud maxima y minima, etc etc
 
-const CharacterSchema = new Schema(
+const ChatSchema = new Schema(
   {
-    name: { type: String, required: false, unique: false },
-    gender: {
-      type: String,
-      enum: ["hombre", "mujer", "otros"],
-      required: false,
-    },
-    image: {
-      type: String,
-      required: false,
-    },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
-    movies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    messages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
+    userOne: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    userTwo: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,
@@ -35,8 +25,8 @@ const CharacterSchema = new Schema(
 
 //! -------- con la definicion de datos y su esquema vamos a crear el modelo de datos
 
-const Character = mongoose.model("Character", CharacterSchema);
+const Chat = mongoose.model("Chat", ChatSchema);
 
 //! -------- exportar el modelo para que lo utilicen los controladores
 
-module.exports = Character;
+module.exports = Chat;
