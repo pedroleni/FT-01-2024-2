@@ -44,6 +44,9 @@ const createMessage = async (req, res, next) => {
           console.log(chatExistTwo);
 
           if (chatExistOne != null || chatExistTwo != null) {
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ---------------------------- CHAT EXISTE: TENEMOS QUE ACTUALIZARLO -------------------------------------
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             ///&/ existe un chat y entonces lo actualizamos conm el nuevo mensaje
 
             if (chatExistOne) {
@@ -52,10 +55,23 @@ const createMessage = async (req, res, next) => {
                   $push: { messages: newMessage._id },
                 });
 
-                return res.status(200).json({
-                  chat: await Chat.findById(chatExistOne._id),
-                  comment: newMessage,
-                });
+                try {
+                  await User.findByIdAndUpdate(req.user._id, {
+                    $push: {
+                      postedMessages: newMessage._id,
+                    },
+                  });
+                  return res.status(200).json({
+                    chat: await Chat.findById(chatExistOne._id),
+                    comment: newMessage,
+                  });
+                } catch (error) {
+                  return res.status(404).json({
+                    error:
+                      "no hemos actualizado el user en la clave postedMenssages",
+                    idMessage: newMessage._id,
+                  });
+                }
               } catch (error) {
                 try {
                   await Menssage.findByIdAndDelete(savedMessage._id);
@@ -65,11 +81,11 @@ const createMessage = async (req, res, next) => {
                       "error en actualizar el chat existente, elimino el comentario"
                     );
                 } catch (error) {
-                  return res
-                    .status(404)
-                    .json(
-                      "no he borrado el coment  ni tampoco he actualizdo el chat existente"
-                    );
+                  return res.status(404).json({
+                    idCommentNoDeleted: newMessage._id,
+                    error:
+                      "no he borrado el coment  ni tampoco he actualizdo el chat existente",
+                  });
                 }
               }
             } else if (chatExistTwo) {
@@ -78,10 +94,23 @@ const createMessage = async (req, res, next) => {
                   $push: { messages: newMessage._id },
                 });
 
-                return res.status(200).json({
-                  chat: await Chat.findById(chatExistTwo._id),
-                  comment: newMessage,
-                });
+                try {
+                  await User.findByIdAndUpdate(req.user._id, {
+                    $push: {
+                      postedMessages: newMessage._id,
+                    },
+                  });
+                  return res.status(200).json({
+                    chat: await Chat.findById(chatExistTwo._id),
+                    comment: newMessage,
+                  });
+                } catch (error) {
+                  return res.status(404).json({
+                    error:
+                      "no hemos actualizado el user en la clave postedMenssages",
+                    idMessage: newMessage._id,
+                  });
+                }
               } catch (error) {
                 try {
                   await Menssage.findByIdAndDelete(savedMessage._id);
@@ -100,7 +129,9 @@ const createMessage = async (req, res, next) => {
               }
             }
           } else {
-            console.log("entro");
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ---------------------------- CREAR CHAT PORQUE NO EXISTE NINGUNO ---------------------------------------
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             /// crear un chat con el comentario que hemos creado
             const newChat = new Chat({
@@ -111,19 +142,45 @@ const createMessage = async (req, res, next) => {
 
             try {
               await newChat.save();
-              return res.status(200).json({
-                chat: newChat,
-                comment: newMessage,
-              });
+
+              try {
+                await User.findByIdAndUpdate(req.user._id, {
+                  $push: {
+                    postedMessages: newMessage._id,
+                    chats: newChat._id,
+                  },
+                });
+
+                try {
+                  await User.findByIdAndUpdate(idRecipient, {
+                    $push: {
+                      chats: newChat._id,
+                    },
+                  });
+
+                  return res.status(200).json({
+                    chat: newChat,
+                    comment: newMessage,
+                  });
+                } catch (error) {
+                  return res.status(404).json({
+                    error:
+                      "no hemos actualizado el user que recibe el comentario la clave chat",
+                    idMessage: newMessage._id,
+                  });
+                }
+              } catch (error) {
+                return res.status(404).json({
+                  error:
+                    "no hemos actualizado el user en la clave postedMenssages y en la clave chats",
+                  idMessage: newMessage._id,
+                });
+              }
             } catch (error) {
               // lo borramos porque no nos ha enviado bien el tipo
               try {
                 await Menssage.findByIdAndDelete(savedMessage._id);
-                return res
-                  .status(404)
-                  .json(
-                    "no se ha guardado el nuevo chat y se ha borrado el comentario"
-                  );
+                return res.status(404).json(error.message);
               } catch (error) {
                 return res
                   .status(404)
@@ -138,6 +195,46 @@ const createMessage = async (req, res, next) => {
         }
       } else if (type == "public") {
         // SIMPLEMENTE CREAMOS EL COMENTARIO Y LO METEMOS EN LOS ARRAY DE LOS MODELOS AL QUE CORRESPONDA -- USER
+
+        try {
+          await User.findByIdAndUpdate(req.user._id, {
+            $push: {
+              postedMessages: newMessage._id,
+            },
+          });
+
+          try {
+            await User.findByIdAndUpdate(idRecipient, {
+              $push: {
+                commentsPublicByOther: newMessage._id,
+              },
+            });
+
+            return res.status(200).json({
+              userOwner: await User.findById(req.user._id).populate([
+                {
+                  path: "chats",
+                  model: Chat,
+                  populate: "messages userOne userTwo",
+                },
+              ]),
+              recipient: await User.findById(idRecipient),
+              comentario: newMessage._id,
+            });
+          } catch (error) {
+            return res.status(404).json({
+              error:
+                "error catch update quien recibe el comentario  -  commentsPublicByOther",
+              message: error.message,
+            });
+          }
+        } catch (error) {
+          return res.status(404).json({
+            error:
+              "error catch update quien hace el comentario  -  postedMessages",
+            message: error.message,
+          });
+        }
       } else {
         // lo borramos porque no nos ha enviado bien el tipo
         await Menssage.findByIdAndDelete(savedMessage._id);
