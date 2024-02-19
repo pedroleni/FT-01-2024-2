@@ -54,9 +54,9 @@ const UserSchema = new mongoose.Schema(
     banned: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     blockedByApp: { type: Boolean, default: false },
     commentsPublicByOther: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Message" },
-    ],
-    postedMessages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
+      { type: mongoose.Schema.Types.ObjectId, ref: "Menssage" },
+    ], // los que me hacen a mi
+    postedMessages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Menssage" }], // son los messages que creo
     /// cuando relacionamos un modelo de con otro lo hacemos con populate y el ref a otro modelo
   },
   {

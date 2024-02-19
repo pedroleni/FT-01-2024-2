@@ -24,7 +24,7 @@ const CharacterSchema = new Schema(
       type: String,
       required: false,
     },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Menssage" }],
     movies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },

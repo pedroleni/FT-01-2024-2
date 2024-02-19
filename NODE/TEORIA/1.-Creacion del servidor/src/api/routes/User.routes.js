@@ -14,6 +14,7 @@ const {
   modifyPassword,
   update,
   deleteUser,
+  followUserToggle,
 } = require("../controllers/User.controllers");
 const express = require("express");
 const UserRoutes = express.Router();
@@ -28,6 +29,7 @@ UserRoutes.post("/login", login);
 UserRoutes.post("/login/autologin", autoLogin);
 UserRoutes.patch("/forgotpassword", changePassword);
 UserRoutes.delete("/", [isAuth], deleteUser);
+UserRoutes.patch("/follow/:idUserSeQuiereSeguir", [isAuth], followUserToggle);
 
 //! ---------------- endPoints con auth ---------------------------------------
 
