@@ -4,7 +4,7 @@ export const useFetching = (service, paramDelEndPoint) => {
   console.log("entro en el fetching 🌱");
   const [state, setState] = useState({
     data: null,
-    isLoading: null,
+    isLoading: false,
     hasError: null,
   });
 
@@ -12,7 +12,7 @@ export const useFetching = (service, paramDelEndPoint) => {
     console.log("😊");
     setState({
       data: null,
-      isLoading: null,
+      isLoading: false,
       hasError: null,
     });
     setState({ ...state, isLoading: true });
@@ -70,8 +70,5 @@ export const useFetching = (service, paramDelEndPoint) => {
   return {
     dataFetch,
     state,
-    isLoading: state.isLoading,
-    hasError: state.hasError,
-    data: state.data,
   };
 };

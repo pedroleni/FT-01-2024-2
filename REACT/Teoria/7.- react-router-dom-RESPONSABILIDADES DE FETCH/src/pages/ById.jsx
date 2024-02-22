@@ -1,3 +1,9 @@
+import { CardById } from "../components";
+
 export const ById = () => {
-  return <div>ById</div>;
+  return (
+    <div>
+      <CardById />
+    </div>
+  );
 };

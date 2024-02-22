@@ -4,3 +4,6 @@ export * from "./H1";
 export * from "./Gallery";
 export * from "./Card";
 export * from "./Nav";
+export * from "./Input";
+export * from "./CardById";
+export * from "./Spinner";
