@@ -1,0 +1,19 @@
+.figurePokemonById {
+  display: flex;
+}
+
+#containerByIdPokemon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.figurePokemonById div {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
