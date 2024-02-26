@@ -25,6 +25,10 @@ export const App = () => {
           <H1Custom text="H1 Custom" width="small" color="blue" />
           <H1Custom text="H1 Custom" width="large" />
         </FlexContainer>
+
+        <ButtonStyle variant="">
+          <div>Prueba</div>
+        </ButtonStyle>
       </ThemeProvider>
     </>
   );

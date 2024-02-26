@@ -1,20 +1,19 @@
 const SPACE_PIXELS_VALUE = 8;
 
 // FUNCION QUE PERMITE MARCAR EL ESPACIADO DE NUESTRA APP
-export const spacing = (spaceV, spaceH) => {
-  spaceH !== null && spaceV !== undefined
+export const spacing = (spaceV, spaceH) =>
+  spaceH !== null && spaceH !== undefined
     ? `${spaceV * SPACE_PIXELS_VALUE}px ${spaceH * SPACE_PIXELS_VALUE}px`
-    : `${spaceV * SPACE_PIXELS_VALUE}px ${spaceH * SPACE_PIXELS_VALUE}px`;
-};
+    : `${spaceV * SPACE_PIXELS_VALUE}px`;
 
-// Funcion que comprueba si es objeto plano
 const isPlainObject = (item) => {
   return (
-    item !== null && typeof item === "object" && item.contructor === Object
+    item !== null && typeof item === "object" && item.constructor === Object
   );
 };
 
-// FUNCION QUE DEFINE EL TEMA DE LA APP --> DADO POR EMOTION
+//función que define el tema de la app --> dada por emotion
+
 export function createTheme(baseTheme, theme) {
   const output = { ...baseTheme };
   if (isPlainObject(baseTheme) && isPlainObject(theme)) {
