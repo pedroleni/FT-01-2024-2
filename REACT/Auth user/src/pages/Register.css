@@ -31,6 +31,9 @@ a {
   padding: 15px 25px 30px;
   color: #333;
   border-radius: 5px;
+  width: 650px;
+  
+  min-width: 350px;
 }
 
 .form-wrap h1,
@@ -150,4 +153,11 @@ a {
 
 .anchorCustom {
   color: #276052;
+}
+
+@media (max-width: 400px){
+  .form-wrap{
+    width: 95vw;
+  }
+
 }
