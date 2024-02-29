@@ -4,19 +4,20 @@ import { useForm } from "react-hook-form";
 import { Uploadfile } from "../components";
 import { useEffect, useState } from "react";
 import { registerUser } from "../services/user.service";
+import { useRegisterError } from "../hooks";
+import { useAuth } from "../context/authContext";
 export const Register = () => {
   const { register, handleSubmit } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [okRegister, setOkRegister] = useState(false);
 
+  //todo -------- no olvidar el deleteUser del contexto --> ya lo explicaremos
+  const { allUser, setAllUser, bridgeData } = useAuth();
+
   //! ------------------------------------------------------------------------------
   //? 1) funcion que se encarga del formulario - de la data del formulario
   //! ------------------------------------------------------------------------------
-
-  useEffect(() => {
-    console.log("res", res);
-  }, [res]);
 
   const formSubmit = async (formData) => {
     console.log("formData", formData);
@@ -40,6 +41,23 @@ export const Register = () => {
   //! ------------------------------------------------------------------------------
   //? 2) useEffect que gestionamos la respuesta y sus errores
   //! ------------------------------------------------------------------------------
+
+  useEffect(() => {
+    useRegisterError(res, setOkRegister, setRes);
+    if (res?.status == 200) bridgeData("ALLUSER");
+  }, [res]);
+
+  useEffect(() => {
+    console.log("😍", allUser);
+  }, [allUser]);
+
+  //! ------------------------------------------------------------------------------
+  //? 3) Estados de navegacion ----> lo veremos en siguiente proyectos
+  //! ------------------------------------------------------------------------------
+  if (okRegister) {
+    return <Navigate to="/verifyCode" />;
+  }
+
   return (
     <>
       <div className="form-wrap">

@@ -5,6 +5,8 @@ const AuthContext = createContext();
 
 //! 2) la funcion  que nos provee del contexto
 
+// funcion  puente
+
 export const AuthContextProvider = ({ children }) => {
   // 1) El estado del user autenticado
 
@@ -13,6 +15,36 @@ export const AuthContextProvider = ({ children }) => {
 
     return user ? JSON.parse(user) : null;
   });
+
+  const [allUser, setAllUser] = useState({
+    data: {
+      confirmationCode: "",
+      user: {
+        password: "",
+        email: "",
+      },
+    },
+  });
+
+  //! -----------------------------------------------------------------------
+  //? -------- PUENTE PARA CUANDO TENGAMOS PROBLEMAS DE ASYNCRONIA ----------
+  //! -----------------------------------------------------------------------
+
+  const bridgeData = (state) => {
+    const data = localStorage.getItem("data");
+    const dataJson = JSON.parse(data);
+    console.log(dataJson);
+    switch (state) {
+      case "ALLUSER":
+        setAllUser(dataJson);
+        localStorage.removeItem("data");
+
+        break;
+
+      default:
+        break;
+    }
+  };
 
   // 2) Funciones que utlizamos en el contexto
 
@@ -30,7 +62,10 @@ export const AuthContextProvider = ({ children }) => {
 
   // 3) Memorizar los valores que vamos a proveer
 
-  const value = useMemo(() => ({ user, setUser, login, logout }), [user]);
+  const value = useMemo(
+    () => ({ user, setUser, login, logout, allUser, setAllUser, bridgeData }),
+    [user, allUser]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
