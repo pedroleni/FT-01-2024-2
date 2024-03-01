@@ -26,6 +26,8 @@ export const AuthContextProvider = ({ children }) => {
     },
   });
 
+  const [deleteUser, setDeleteUser] = useState(false);
+
   //! -----------------------------------------------------------------------
   //? -------- PUENTE PARA CUANDO TENGAMOS PROBLEMAS DE ASYNCRONIA ----------
   //! -----------------------------------------------------------------------
@@ -63,8 +65,18 @@ export const AuthContextProvider = ({ children }) => {
   // 3) Memorizar los valores que vamos a proveer
 
   const value = useMemo(
-    () => ({ user, setUser, login, logout, allUser, setAllUser, bridgeData }),
-    [user, allUser]
+    () => ({
+      user,
+      setUser,
+      login,
+      logout,
+      allUser,
+      setAllUser,
+      bridgeData,
+      deleteUser,
+      setDeleteUser,
+    }),
+    [user, allUser, deleteUser]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

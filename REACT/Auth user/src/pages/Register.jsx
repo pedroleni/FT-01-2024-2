@@ -13,7 +13,7 @@ export const Register = () => {
   const [okRegister, setOkRegister] = useState(false);
 
   //todo -------- no olvidar el deleteUser del contexto --> ya lo explicaremos
-  const { allUser, setAllUser, bridgeData } = useAuth();
+  const { allUser, setAllUser, bridgeData, setDeleteUser } = useAuth();
 
   //! ------------------------------------------------------------------------------
   //? 1) funcion que se encarga del formulario - de la data del formulario
@@ -50,6 +50,10 @@ export const Register = () => {
   useEffect(() => {
     console.log("😍", allUser);
   }, [allUser]);
+
+  useEffect(() => {
+    setDeleteUser(() => false);
+  }, []);
 
   //! ------------------------------------------------------------------------------
   //? 3) Estados de navegacion ----> lo veremos en siguiente proyectos

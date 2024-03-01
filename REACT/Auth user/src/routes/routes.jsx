@@ -12,6 +12,7 @@ import {
   ChangePassword,
 } from "../pages";
 import App from "../App";
+import { Protected, ProtectedCheckChildren } from "../components";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <Protected>
+            <Dashboard />
+          </Protected>
+        ),
       },
       {
         path: "/forgotPassword",
@@ -40,19 +45,35 @@ export const router = createBrowserRouter([
       },
       {
         path: "/verifyCode",
-        element: <CheckCode />,
+        element: (
+          <ProtectedCheckChildren>
+            <CheckCode />
+          </ProtectedCheckChildren>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <Protected>
+            <Profile />
+          </Protected>
+        ),
         children: [
           {
             path: "/profile/changePassword",
-            element: <ChangePassword />,
+            element: (
+              <Protected>
+                <ChangePassword />
+              </Protected>
+            ),
           },
           {
             path: "/profile/",
-            element: <FormProfile />,
+            element: (
+              <Protected>
+                <FormProfile />
+              </Protected>
+            ),
           },
         ],
       },

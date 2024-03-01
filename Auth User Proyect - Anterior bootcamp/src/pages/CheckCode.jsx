@@ -74,14 +74,7 @@ export const CheckCode = () => {
   //! --------USE EFFECT QUE NOSC SIRVE CUANDO CAMBIA RES A LANZAR EL COMPROBADOR DE ERRORES
   useEffect(() => {
     console.log("😭", res);
-    useCheckCodeError(
-      res,
-      setRes,
-      setOkCheck,
-      setOkDeleteUser,
-      login,
-      setUserNotFound
-    );
+   º
   }, [res]);
 
   useEffect(() => {
