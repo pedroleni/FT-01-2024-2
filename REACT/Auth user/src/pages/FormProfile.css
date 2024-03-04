@@ -11,7 +11,7 @@
   align-items: center;
   background-color: #2f7a67;
   max-width: 1000px;
-  margin-top: 2rem;
+  margin: 2rem 0 2rem 0;
   border-radius: 20px;
 }
 
@@ -34,5 +34,7 @@
 @media (max-width: 400px) {
   .formProfile {
     margin: 0.5rem;
+    width: 90%;
   }
+
 }
